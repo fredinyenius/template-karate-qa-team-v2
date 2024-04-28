@@ -9,11 +9,11 @@ Feature: Ejemplos practicos Karate
     Then status 201
     And match response.title == "foo"
     And match response.body == "bar"
-    And match response.userId == 1
+    And match response.userId == 4
 
 
-    Scenario: Test 02
-         Given url "https://jsonplaceholder.typicode.com"
+    Scenario: Test 02 :con js
+        Given url "https://jsonplaceholder.typicode.com"
         And  path "/posts"
         And header Authorization = call read('classpath:resources/js/practica.js') {"username": "admin", "password": "123456"}
         And request { "title": "foo","body": "bar", "userId": 1}
@@ -21,10 +21,11 @@ Feature: Ejemplos practicos Karate
         Then status 201
 
     Scenario: Test 03 - JAVA
+        * url urlBase
         * def javaPosts = Java.type('resources.java.commom.Prueba')
+        * print javaPosts
         * def id = javaPosts.idPosts();
         * print id
-        Given url "https://jsonplaceholder.typicode.com"
-        And  path "/posts"
-        When method GET
+        Given path "/posts/" + id
+        When method get
         Then status 200

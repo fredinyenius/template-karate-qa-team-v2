@@ -5,7 +5,7 @@ import com.intuit.karate.junit5.Karate;
 public class TestRunner {
     @Karate.Test
     Karate testLogin() {
-        return Karate.run("loginAuth").relativeTo(getClass());
+        return Karate.run("auth/loginAuth").relativeTo(getClass());
     }
 
     @Karate.Test

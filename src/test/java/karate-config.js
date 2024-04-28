@@ -3,7 +3,7 @@ function fn() {
 
   var config = {
     env: env,
-    urlBase: 'https://api-ventas.synnexaconsulting.com'
+    urlBase: 'https://jsonplaceholder.typicode.com'
   }
 
   return config;
